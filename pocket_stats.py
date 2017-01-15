@@ -2,9 +2,10 @@ import json
 import requests
 import numpy as np
 import matplotlib.pyplot as plt
+from config import consumer_key, access_token, redirect_uri
 
-access_data = { "consumer_key":"ADD CONSUMER_KEY_HERE",
-				"access_token":"ADD ACCESS KEY HERE",
+access_data = { "consumer_key": consumer_key,
+				"access_token": access_token,
 				"detailType":"simple",
 				"sort":"newest"
 				}
