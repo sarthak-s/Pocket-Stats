@@ -1,22 +1,34 @@
+import sys
 import json
 import requests
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from config import consumer_key, access_token, redirect_uri
 
-access_data = { "consumer_key": consumer_key,
-				"access_token": access_token,
-				"detailType":"simple",
-				"sort":"newest"
-				}
 
-#headers = {"content-type":"application/json"}	#No need to feed headers (gives error). requests lib takes care of it.
+def get_pocket_data():	
+	access_data = { "consumer_key": consumer_key,
+					"access_token": access_token,
+					"detailType":"simple",
+					"sort":"newest"
+					}
 
-pocket_response = requests.post("https://getpocket.com/v3/get",
-					data = access_data)
+	#headers = {"content-type":"application/json"}	#No need to feed headers (gives error). requests lib takes care of it.
 
+	pocket_response = requests.post("https://getpocket.com/v3/get",
+						data = access_data)
+	
+	if pocket_response.status_code == 200:
+		return pocket_response.json()
+	else:
+		return None
+	
 
-json_data = pocket_response.json()
+json_data = get_pocket_data()
+if json_data is None: #Exit the program
+	print "Invalid response. Exiting program..."
+	sys.exit(0)
+
 
 #Write json data to a text file, if needed
 #file = open('pocket_stats.txt','w')	#File is created
