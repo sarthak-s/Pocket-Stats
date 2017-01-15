@@ -3,8 +3,8 @@ import requests
 import numpy as np
 import matplotlib.pyplot as plt
 
-access_data = { "consumer_key":"61908-55d9a0ab93975ff285bb5b23",
-				"access_token":"ff186a2e-2de4-3ca6-1075-bcd295",
+access_data = { "consumer_key":"ADD CONSUMER_KEY_HERE",
+				"access_token":"ADD ACCESS KEY HERE",
 				"detailType":"simple",
 				"sort":"newest"
 				}
