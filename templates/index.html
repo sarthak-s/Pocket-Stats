@@ -5,14 +5,15 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
 </head>
 <body>
-	<h2>
-		Pocket Stats! 
-	</h2>
-	<br>
+	<h2>Pocket Stats!</h2>
 	<h5><a href="https://github.com/sarthak-s/Pocket-Stats.git">Source</a></h5>
 	<br>
-
-	<canvas id="myChart"></canvas>
+	<br>
+	{% if data %}
+		<canvas id="myChart"></canvas>
+	{% else %}
+	  	<h3>Something's not right! Error! </h3>
+	{% endif %}
 
 	<script type="text/javascript">
 		var data = {{data | tojson}};
@@ -27,6 +28,7 @@
 			values.push(data[item])
 		}
 		
+		// Chart properties
 		var data = {
 				    labels: labels,
 				    datasets: [
@@ -49,7 +51,7 @@
 			    maintainAspectRatio: true
 			}
 		
-		// For a pie chart
+		// Draw the pie chart
 		var ctx = document.getElementById("myChart").getContext("2d");
 		ctx.canvas.width = 500;
 		ctx.canvas.height = 500;
